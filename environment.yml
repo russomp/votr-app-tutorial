@@ -1,0 +1,6 @@
+name: votr-app
+dependencies:
+- python=3
+- pip
+- pip:
+    - flask
