@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Votr! - signup</title>
+{% endblock %}
+
+{% block content %}
+<!-- Register form -->
+<div class="card col-md-4 col-md-offset-4">
+  <div class="container-fluid mt-3 mb-3">
+    <form method="post" action="{{ url_for('signup') }}">
+        <p class="h5 text-center mb-4">Sign up</p>
+        <div class="md-form">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="text" name="email" id="orangeForm-email" class="form-control">
+          <label for="orangeForm-email">email</label>
+        </div>
+        <div class="md-form">
+            <i class="fa fa-user prefix grey-text"></i>
+            <input type="text" name="username" id="orangeForm-name" class="form-control">
+            <label for="orangeForm-name">username</label>
+        </div>
+        <div class="md-form">
+            <i class="fa fa-lock prefix grey-text"></i>
+            <input type="password" name="password" id="orangeForm-pass" class="form-control">
+            <label for="orangeForm-pass">password</label>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-deep-orange" type="submit">Sign up</button>
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

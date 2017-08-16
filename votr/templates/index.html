@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <title>Votr! - Create polls online</title>
+{% endblock %}
+
+
+{% block styles %}
+{% endblock %}
+
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="h1-responsive">Votr!</h1>
+    <p class="lead">It's easier than ever to create and track polls online with Votr.</p>
+    <hr class="my-2">
+    <p>Create and share free online polls today!</p>
+    {% if session.get('user') %}
+      <a class="btn btn-default btn-lg" href="{{ url_for('polls') }}" role="button">Create Poll</a>
+    {% else %}
+      <a class="btn btn-default btn-lg" href="{{ url_for('signup') }}" role="button">Signup today!</a>
+    {% endif %}
+</div>
+
+
+<!-- Login form -->
+<div class="card col-md-4 m-auto">
+  <div class="container-fluid mt-3 mb-3">
+    <form method="post" action="{{ url_for('login') }}">
+        <p class="h5 text-center mb-4">Login</p>
+        <div class="md-form">
+            <i class="fa fa-user prefix grey-text"></i>
+            <input type="text" name="username" id="orangeForm-name" class="form-control">
+            <label for="orangeForm-name">username</label>
+        </div>
+        <div class="md-form">
+            <i class="fa fa-lock prefix grey-text"></i>
+            <input type="password" name="password" id="orangeForm-pass" class="form-control">
+            <label for="orangeForm-pass">password</label>
+        </div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category, message in messages %}
+              <p class="{{ category }}">{{ message }}</p>
+              {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <div class="text-center">
+            <button class="btn btn-default" type="submit">Login</button>
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

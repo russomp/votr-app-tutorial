@@ -11,10 +11,17 @@ class Base(db.Model):
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
                                 onupdate=db.func.current_timestamp())
 
+class Users(Base):
+    email = db.Column(db.String(100), unique=True)
+    username = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(200))
+
+
 class Topics(Base):
     title = db.Column(db.String(500))
     def __repr__(self):
         return self.title
+
 
 class Polls(Base):
     # Set polls table columns
@@ -27,6 +34,7 @@ class Polls(Base):
     option = db.relationship('Options', foreign_keys=[option_id])
     def __repr__(self):
         return self.option.name
+
 
 class Options(Base):
     name = db.Column(db.String(200))
