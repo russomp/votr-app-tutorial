@@ -56,7 +56,11 @@ var PollForm = React.createClass({
 });
 
 var LivePreview = React.createClass({
-  
+  	
+	handleSampleVote: function(e){
+		e.preventDefault();
+	},
+
 	render: function(){
     	
     	var options = this.props.options.map(function(option){
@@ -80,7 +84,7 @@ var LivePreview = React.createClass({
 	          <form>
 	            {options}
 	            <br />
-	            <button type="submit" className="btn btn-success btn-outline hvr-grow">Vote!</button>
+	            <button className="btn btn-success btn-outline hvr-grow" onClick={this.handleSampleVote}>Vote!</button>
 	          </form>
 	        </div>
 	      </div>
